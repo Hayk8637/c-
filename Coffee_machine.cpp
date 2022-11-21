@@ -6,24 +6,17 @@ struct Coffee
     int money;
 };
 
-// Մանրի և ապրանքի վերադարձը ցանկալի էր կատարել նույն struct֊ով
-// Վերադարձի գործողության ժամանակ ինձ չի հետաքրքրում ինչքան գումար էի փոխանցել
-// Միայն վերադարձվող նամակը (Սուրճի անուն, կամ սխալի մասին նամակ)
 struct Small_return
 {
     string coffee;
     int entered_money;
     int small_return;
 };
-
 class Coffee_machine
 {
 private:
     int *m_nProductPrice;
     string *m_sProductList;
-    // Փոփոխականին արժեք տալիս ենք միայն կառուցիչում
-    // Բացի դա անհասկանալի է, թե ինչ տրամաբանությամբ ես փոփոխականի արժեքը տալիս
-    // Քանի սր հնարավոր չի զանգվածի չափը իմանալ, կարող էիր կառուցիչին փոխանցել նաև m_nListLen֊ի արժեքը
     int m_nListLen = (*(&m_nProductPrice + 1) - m_nProductPrice) / 4;
 
 public:
@@ -31,7 +24,6 @@ public:
         : m_nProductPrice(nProductPrice), m_sProductList(sProductList)
     {
     }
-    
     Small_return SmallReturn(Coffee prod, int price)
     {
         Small_return smallReturn;
@@ -59,8 +51,6 @@ public:
         m_sProductList = list;
         m_nListLen = (*(&m_nProductPrice + 1) - m_nProductPrice) / 4;
     }
-
-    // Պետք էր վերադարձնել ոչ թե boolean, այլ { "նամակ"(Սուրճի անուն, կամ սխալի մասին նամակ), մանր } կառուցվածք
     bool Order(Coffee product)
     {
         string *prod = m_sProductList;
@@ -71,7 +61,6 @@ public:
                 if (product.money >= *m_nProductPrice + i)
                 {
                     SmallReturn(product, *m_nProductPrice + i);
-                    
                     return true;
                 }
                 cout << "You haven't enaugh mony." << endl;
@@ -93,8 +82,7 @@ int main()
 
     cin>>product.coffee >> product.money;
 
-    // Խնդրում տպվում է մանրը, բայց ճիշտ կլիներ վերադարձնել { "նամակ"(Սուրճի անուն, կամ սխալի մասին նամակ), մանր } կառուցվածք,
-    // որը հնարավոր կլիներ հետագայում օգատգործել։
+
     c.Order(product);
     //c.PrintPriceList();
     
