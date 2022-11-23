@@ -32,9 +32,12 @@ public:
         return 2*M_PI*m_nR;
     }
 };
+
 class circle : public ellips
 {
     private:
+        // ellips֊ում արդեն m_nR֊ը հայտարարված է, պետք չէ circle֊ում նորից հայտարարել։
+        // Նույնը վերաբերվում է, մյուս բոլոր ժառանգումներին
         int m_nR;
     public:
         circle(int r)
