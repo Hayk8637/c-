@@ -27,15 +27,22 @@ class Complex {
             {
                 return true;
             }
+            
+            // Քանի որ if-ի մարմնում return ես անում, կարելի էր 32 տողը չգրել
             else
                 return false;
             
         }
+    
+        // Ցանկալի ա, որ += operator֊ը վերադարձնի this֊ը, որպեսզի հնարավոր լինի կատարել հետևյալ գործողությունը
+        // Օր․ if( ( obj1 += obj2 ) != 0 )
         void operator+=(Complex const &obj)
         {
             m_nFalse += obj.m_nFalse;
             m_nReal += obj.m_nReal;
         }
+    
+        // Prefix ++ը պետք է this֊ը վերադարձնի
         Complex operator++ (){
             ++m_nFalse;
             ++m_nReal;
