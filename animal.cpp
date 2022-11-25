@@ -114,6 +114,10 @@ class dog: public animal
 };
 
 int main(){
+    // Dynamic polymorphism֊ի իմաստն այն է, որ ստեղծես Base* pointer֊ով օբյեկտ, որը
+    // կցուցի Derived class֊ի օբյեկտի վրա ու ֆունկցիան կանչելիս կաշխատեցնի derived֊ինը
+    //  Base* obj = new Derived();
+    //  obj->foo(); // կաշխատի Derived::foo, ոչ թե Base::foo
     cat c("hay" , 3 ,  "h" , "white");
     std::cout<<c.getName()<<std::endl;
     std::cout<<c.getId()<<std::endl;
