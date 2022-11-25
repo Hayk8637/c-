@@ -3,14 +3,19 @@
 
 class animal
 {
+    // Քանի որ ժառանգները նույնպես կարող են օգտագործել, ապա ճիշտ կլինի 
+    // ներքոնշյալ փոփոխականները լինեն ոչ թե private, այլ protected
     private:
         std::string m_sname;
-        int m_nid;
+        int m_nid; 
     public:
         animal()
         : m_sname ("aaa")
         , m_nid (1)
         {}
+    
+        // Երբ որ parameter֊ը պարզ տիպի չէ (bool,char, int), օր․ std::string
+        // parameter֊ի պատճենումից պետք է խուսափել
         animal(std::string name , int id)
         : m_sname (name)
         , m_nid (id)
@@ -39,6 +44,10 @@ class animal
 
 class cat: public animal
 {
+    // Եթե Animal դասի բոլոր ժառանգները ունեն որևէ գործողություն/անդամ փոփոխական, ապա այդ գործողությունը պետք է հայտարարված լինի
+    // ծնողում (Animal), որպեսզի հնարավոր լինի կանչել նաև ներքնշյալ obj֊ի վրա
+    // Animal* obj = new Cat();
+    // Այսինքն m_sbreed, m_scolor փոփոխականները լինեն animal֊ի protected անդամներ
     private:
         std::string m_sbreed;
         std::string m_scolor;
